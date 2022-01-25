@@ -1,7 +1,6 @@
 <html>
 <head>
     <title>Ajax Example</title>
-
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
     </script>
 
@@ -9,13 +8,17 @@
         $(document).ready(function () {
             $('#msg').click(function() {
                 //var $button = $(this).find('button');
+
                 $.ajax({
                     type:'POST',
                     url:'{{route('gettext')}}',
-                    data:'_token = <?php echo csrf_token() ?>',
-                    success:function(data){
-                     //   $("#msg").html(data.msg);
+                    _token: '{{csrf_token()}}',
+                    success:function(){
+                       $("#msg").html(data.msg);
 
+                    },
+                    error: function (jqXhr, textStatus, errorMessage) {
+                        $('p').append('Error: ' + errorMessage);
                     }
                 });
             });
@@ -25,10 +28,11 @@
 
 <body>
 
-<form id="ajax">
-    @csrf
+<form id="ajax" method="POST">
+    {{ csrf_field() }}
     <button type="button"  id="msg">click me</button>
 </form>
+<p></p>
 
 </body>
 
