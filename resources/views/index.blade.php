@@ -6,23 +6,27 @@
     </script>
 
     <script>
-        function getMessage(){
-            $.ajax({
-                type:'POST',
-                url:'/gettext',
-                data:'_token = <?php echo csrf_token() ?>',
-                success:function(data){
-                    $("#msg").html(data.msg);
-                }
+        $(document).ready(function () {
+            $('#msg').click('submit', function() {
+                //var $button = $(this).find('button');
+                $.ajax({
+                    type:'POST',
+                    url:'{{route('gettext')}}',
+                    data:'_token = <?php echo csrf_token() ?>',
+                    success:function(data){
+                        $("#msg").html(data.msg);
+                    }
+                });
             });
-        }
+        })
     </script>
 </head>
 
 <body>
 
-<form>
-    <button type="button" onclick="getMessage()" id="msg">click me</button>
+<form id="ajax">
+    @csrf
+    <button type="button"  id="msg">click me</button>
 </form>
 
 </body>

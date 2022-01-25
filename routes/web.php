@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/gettextt','App\Http\Controllers\AjaxController@index');
-Route::post('/gettext','App\Http\Controllers\AjaxController@show');
+Route::get('/gettext','App\Http\Controllers\AjaxController@index');
+Route::post('/gettext','App\Http\Controllers\AjaxController@show')->name('gettext');
