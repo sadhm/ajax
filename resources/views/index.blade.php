@@ -7,14 +7,15 @@
 
     <script>
         $(document).ready(function () {
-            $('#msg').click('submit', function() {
+            $('#msg').click(function() {
                 //var $button = $(this).find('button');
                 $.ajax({
                     type:'POST',
                     url:'{{route('gettext')}}',
                     data:'_token = <?php echo csrf_token() ?>',
                     success:function(data){
-                        $("#msg").html(data.msg);
+                     //   $("#msg").html(data.msg);
+
                     }
                 });
             });
