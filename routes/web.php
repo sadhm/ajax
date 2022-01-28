@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/gettext','App\Http\Controllers\AjaxController@index');
-Route::post('/gettext','App\Http\Controllers\AjaxController@show')->name('gettext');
+Route::post('/gettext','App\Http\Controllers\AjaxController@show')->name('gettextt');
+

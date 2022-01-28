@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-class AjaxController extends Controller
+class AjaxController  extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('test');
 
     }
 
@@ -20,4 +21,6 @@ class AjaxController extends Controller
         $msg = "message is changed";
         return response()->json(array('msg'=> $msg), 200);
     }
+
+
 }
